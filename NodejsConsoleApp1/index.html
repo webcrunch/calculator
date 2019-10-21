@@ -47,6 +47,11 @@
 <body>
 
     <h2>Uträknings Maskin</h2>
+    <p>
+        Du använder den här räknemaskinen genom att klicka på en siffra och sedan välja vilket räknesätt man ska använda och sedan vilken siffra som ska kalulera med den du valde först.
+        Om du fortsätter att välja siffror kommer de att beräknas utifrån räknesättet som är valt med den aktuella siffran. Du har möjlighet att ändra räknesätt närhelst du önskar. Med den verkan att fortsatta beräkningar är utifrån det räknesättet. 
+        För at få fram svaret klickar man på =. 
+    </p>
     <div>
         <button class="btn" onclick="myFunction(1)" type="button">1</button>
         <button class="btn" onclick="myFunction(2)" type="button">2</button>
@@ -76,11 +81,10 @@
 
     </div>
 
-    <p>För tillfället kalkulerar du med: <p id="state"></p></p>
+    <p>räknesättet du kalkulerar med: <p id="state"></p></p>
+    <p>    Här kommer svaret att stå sen:<p id="demo"></p>
 
 
-    <p id="demo">
-    Här kommer svaret att stå sen</p>
     <script>
         //Help variable
         let result;
@@ -89,14 +93,14 @@
 
             myFunction = (calc) => {
                 switch (calc) {
-                    case '=':                        
+                    case '=':
                         if (result !== undefined && stateOfcaluclation !== undefined) {
                             document.getElementById("demo").innerHTML = result;
                             break;
                         } else {
                             break;
                         }
-                     
+
                     case 1:
                     case 2:
                     case 3:
@@ -128,7 +132,7 @@
                             result = calc;
                             break;
                         }
-                        
+
                     case '+':
                     case '-':
                     case '*':
