@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>kalkulator</title>
+</head>
+<style>
+    button {
+        padding: 0;
+        border: none;
+        font: inherit;
+        color: inherit;
+        background-color: transparent;
+        /* show a hand cursor on hover; some argue that we
+  should keep the default arrow cursor for buttons */
+        cursor: pointer;
+    }
+
+    .btn {
+        /* default for <button>, but useful for <a> */
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        /* create a small space when buttons wrap on 2 lines */
+        margin: 2px 0;
+        /* invisible border (will be colored on hover/focus) */
+        border: solid 1px transparent;
+        border-radius: 4px;
+        /* size comes from text & padding (no width/height) */
+        padding: 0.5em 1em;
+        /* make sure colors have enough contrast! */
+        color: #ffffff;
+        background-color: #9555af;
+    }
+        .btn:active {
+            transform: translateY(1px);
+            filter: saturate(150%);
+        }
+
+        .btn:hover {
+            color: #9555af;
+            border-color: currentColor;
+            background-color: white;
+        }
+</style>
+<body>
+
+    <h2>Uträknings Maskin</h2>
+    <div>
+        <button class="btn" onclick="myFunction(1)" type="button">1</button>
+        <button class="btn" onclick="myFunction(2)" type="button">2</button>
+        <button class="btn" onclick="myFunction(3)" type="button">3</button>
+    </div>
+    <div>
+        <button class="btn" onclick="myFunction(4)" type="button">4</button>
+        <button class="btn" onclick="myFunction(5)" type="button">5</button>
+        <button class="btn" onclick="myFunction(6)" type="button">6</button>
+
+    </div>
+    <div>
+        <button class="btn" onclick="myFunction(7)" type="button">7</button>
+        <button class="btn" onclick="myFunction(8)" type="button">8</button>
+        <button class="btn" onclick="myFunction(9)" type="button">9</button>
+
+    </div>
+    <div class="space">
+        <button class="btn" onclick="myFunction(0)" type="button">0</button>
+        <button class="btn" onclick="myFunction('/')" type="button">/</button>
+        <button class="btn" onclick="myFunction('=')" type="button">=</button>
+    </div>
+    <div class="space">
+        <button class="btn" onclick="myFunction('+')" type="button">+</button>
+        <button class="btn" onclick="myFunction('-')" type="button">-</button>
+        <button class="btn" onclick="myFunction('*')" type="button">*</button>
+
+    </div>
+
+    <p>För tillfället kalkulerar du med: <p id="state"></p></p>
+
+
+    <p id="demo">
+    Här kommer svaret att stå sen</p>
+    <script>
+        //Help variable
+        let result;
+        let stateOfcaluclation;
+        document.addEventListener("DOMContentLoaded", () => {
+
+            myFunction = (calc) => {
+                switch (calc) {
+                    case '=':                        
+                        if (result !== undefined && stateOfcaluclation !== undefined) {
+                            document.getElementById("demo").innerHTML = result;
+                            break;
+                        } else {
+                            break;
+                        }
+                     
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                        if (result !== undefined && stateOfcaluclation !== undefined) {
+                            if (stateOfcaluclation == '+') {
+                                result = result + calc;
+                                console.log(result);
+                                break
+                            }
+                            if (stateOfcaluclation == '-') {
+                                result = result - calc;
+                                break
+                            }
+                            if (stateOfcaluclation == '*') {
+                                result = result * calc;
+                                break
+                            }
+                            else {
+                                result = result / calc;
+                                break
+                            }
+                        } else {
+                            result = calc;
+                            break;
+                        }
+                        
+                    case '+':
+                    case '-':
+                    case '*':
+                    case '/':
+                        if (result !== undefined) {
+                            stateOfcaluclation = calc;
+                            document.getElementById("state").innerHTML = stateOfcaluclation;
+
+                        }
+                        break;
+                    default:
+                        console.log('Sorry, we are out of ' + calc + '.');
+                }
+            }
+
+        });
+
+    </script>
+</body>
+</html>
